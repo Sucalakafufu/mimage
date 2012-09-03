@@ -19,7 +19,7 @@ void showVersion();
 void badSyntax();
 string currentDir();
 
-const static string VERSIONNUM = "1.2";
+const static string VERSIONNUM = "1.3";
 
 //global vars
 int length;
@@ -67,7 +67,7 @@ void main(int argc, char *argv[])
 	{
 		for (int count=1;count<argc;count++)
 		{
-			if (argv[count][0] == '-')
+			if (argv[count][0] == '/')
 			{
 				storeParam(count, checkParam(count, argv[count]), argv);
 				count++;
@@ -322,7 +322,7 @@ bool nextIsParamOrBlank(int pos, char *argv[])
 {
 	if (pos+1 >= length)
 		return true;
-	else if (argv[pos+1][0] == '-')
+	else if (argv[pos+1][0] == '/')
 		return true;
 	else
 		return false;
@@ -359,7 +359,7 @@ string currentDir()
 void badSyntax()
 {
 	cout << "\nIncorrect Syntax\n"
-		<< "Please try mimage -h\n";
+		<< "Please try mimage /h\n";
 	exit(1);
 }
 
@@ -373,15 +373,15 @@ void help()
 {
 	cout << "Usage: mimage [options]\n\n"
 		<< "Options\n"
-		<< "\t-h\tBrings up this help dialog\n\n"
-		<< "\t-a\tAutoverify (Y or N defaults to N)\n\n"
-		<< "\t-c\tCompression Level (0 - No Compression, 1 - Medium, 2 - High, \n\t\tdefaults to 1)\n\n"
-		<< "\t-d\tDirectory to store image file (defaults to current directory)\n\n"
-		<< "\t-i\tIntelligent Sector Copy (Y or N defaults to Y)\n\n"
-		<< "\t-m\tMethod of backup \n\t\t(0 - Full, 1 - Incremental, 2 - Differential, 3 - Auto, \n\t\tdefaults to 0)\n\n"
-		<< "\t-M\tMacrium Reflect install directory \n\t\t(defaults to C:\\Program Files\\Macrium\\Reflect\\)\n\n"
-		<< "\t-n\tDisk ID to be imaged (defaults to 1)\n\n"
-		<< "\t-p\tPartition number to be imaged (defaults to 1)\n\n"
+		<< "\t/h\tBrings up this help dialog\n\n"
+		<< "\t/a\tAutoverify (Y or N defaults to N)\n\n"
+		<< "\t/c\tCompression Level (0 - No Compression, 1 - Medium, 2 - High, \n\t\tdefaults to 1)\n\n"
+		<< "\t/d\tDirectory to store image file (defaults to current directory)\n\n"
+		<< "\t/i\tIntelligent Sector Copy (Y or N defaults to Y)\n\n"
+		<< "\t/m\tMethod of backup \n\t\t(0 - Full, 1 - Incremental, 2 - Differential, 3 - Auto, \n\t\tdefaults to 0)\n\n"
+		<< "\t/M\tMacrium Reflect install directory \n\t\t(defaults to C:\\Program Files\\Macrium\\Reflect\\)\n\n"
+		<< "\t/n\tDisk ID to be imaged (defaults to 1)\n\n"
+		<< "\t/p\tPartition number to be imaged (defaults to 1)\n\n"
 		<< "\t-v\tDisplays Mimage Version Number\n"
 		;
 	exit(0);
