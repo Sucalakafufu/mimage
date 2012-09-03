@@ -6,6 +6,8 @@
 #include <ctime>
 #include <conio.h>
 #include <vector>
+#include <direct.h>
+#include <stdio.h>
 using namespace std;
 
 char checkParam(int, char *);
@@ -349,10 +351,9 @@ bool checkNext(string original, string compare)
 
 string currentDir() 
 {
-	char buffer[MAX_PATH];
-	GetModuleFileName( NULL, buffer, MAX_PATH );
-	string::size_type pos = string( buffer ).find_last_of( "\\/" );
-	return string( buffer ).substr( 0, pos);
+	char cCurrentPath[FILENAME_MAX];
+	_getcwd(cCurrentPath, sizeof(cCurrentPath));
+	return cCurrentPath;
 }
 
 void badSyntax()
