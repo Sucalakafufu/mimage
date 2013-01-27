@@ -19,7 +19,7 @@ void showVersion();
 void badSyntax();
 string currentDir();
 
-const static string VERSIONNUM = "1.3";
+const static string VERSIONNUM = "1.4";
 
 //global vars
 int length;
@@ -79,7 +79,15 @@ void main(int argc, char *argv[])
 
 	fout.open("Mimage.xml");
 
-	fout << "<backup_definition version =\"2.0\">\n"
+	fout 
+		<< "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+		<< "<!--                                                                                                           -->\n"
+		<< "<!-- BDF v2.0.0 Image and backup definition file for Macrium Reflect v5.0                                      -->\n"
+		<< "<!--                                                                                                           -->\n"
+		<< "<!-- This file is a template XML to enable a Reflect backup or Image to be initiated from VB Script or an      -->\n"
+		<< "<!-- MSDOS batch file.                                                                                         -->\n"
+		<< "<!-- Simply modify this file if required and pass the file name as a parameter to reflect.exe.                 -->\n"
+		<< "<backup_definition version =\"2.0\">\n"
 		<< "<!-- backup or image file properties -->\n"
 		<< "<properties>\n"
 			<< "<!-- Name that appears in the log when this definition is executed -->\n"
@@ -382,7 +390,7 @@ void help()
 		<< "\t/M\tMacrium Reflect install directory \n\t\t(defaults to C:\\Program Files\\Macrium\\Reflect\\)\n\n"
 		<< "\t/n\tDisk ID to be imaged (defaults to 1)\n\n"
 		<< "\t/p\tPartition number to be imaged (defaults to 1)\n\n"
-		<< "\t-v\tDisplays Mimage Version Number\n"
+		<< "\t/v\tDisplays Mimage Version Number\n"
 		;
 	exit(0);
 }
